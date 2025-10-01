@@ -12,17 +12,19 @@
     <section class="hero" style="background-image: url(<?php echo !isset($f_hero['bg_image']) || !$f_hero['bg_image'] ? get_template_directory_uri() . "/assets/images/default-img/bghero.png" : $f_hero['bg_image']; ?>);">
         <div class="container">
             <div class="row">
-                <?php if (isset($f_hero['title']) & $f_hero['title'] != ''): ?>
-                    <h1 class="text-center"><?php echo $f_hero['title']; ?></h1>
-                <?php endif; ?>
-                <?php if (isset($f_hero['subtitle']) & $f_hero['subtitle'] != ''): ?>
-                    <h2 class="text-center"><?php echo $f_hero['subtitle']; ?></h2>
-                <?php endif; ?>
-                <?php if (isset($f_hero['download_cv']['title']) || isset($f_hero['download_cv']['url'])): ?>
-                    <div class="c-button mt-3">
-                        <a class="btn_primary text-center" href="<?php echo $f_hero['download_cv']['url'] ?>"><?php echo $f_hero['download_cv']['title'] ?></a>
-                    </div>
-                <?php endif; ?>
+                <div class="col-12">
+                    <?php if (isset($f_hero['title']) & $f_hero['title'] != ''): ?>
+                        <h1 class="text-center"><?php echo $f_hero['title']; ?></h1>
+                    <?php endif; ?>
+                    <?php if (isset($f_hero['subtitle']) & $f_hero['subtitle'] != ''): ?>
+                        <h2 class="text-center"><?php echo $f_hero['subtitle']; ?></h2>
+                    <?php endif; ?>
+                    <?php if (isset($f_hero['download_cv']['title']) || isset($f_hero['download_cv']['url'])): ?>
+                        <div class="c-button mt-3">
+                            <a class="btn_primary text-center" href="<?php echo $f_hero['download_cv']['url'] ?>"><?php echo $f_hero['download_cv']['title'] ?></a>
+                        </div>
+                    <?php endif; ?>
+                </div>
             </div>
         </div>
     </section>
@@ -32,14 +34,22 @@
     <section class="about py-5">
         <div class="container">
             <div class="row">
-                <?php if (isset($f_about['title']) & $f_about['title'] != ''): ?>
-                    <h2 class="text-center"><?php echo $f_about['title']; ?></h2>
-                <?php endif; ?>
+                <div class="col-12">
+                    <?php if (isset($f_about['title']) & $f_about['title'] != ''): ?>
+                        <h2 class="text-left"><?php echo $f_about['title']; ?></h2>
+                    <?php endif; ?>
+                </div>
             </div>
-            <div class="row about-item">
-                    <div class="item">
-                        <img src="<?php echo get_template_directory_uri() . "/assets/images/default-img/bghero.png"; ?>" alt="">
+            <div class="row mt-5">
+                <div class="col-12">
+                    <div class="about-items">
+                        <?php foreach( $f_about["gallery"] as $item ): ?>
+                            <div class="item" style="background-image: url(<?php echo $item["bg_image"];?>">
+                                <p><?php echo $item["content"]?></p>
+                            </div>
+                        <?php endforeach; ?>
                     </div>
+                </div>
             </div>
         </div>
     </section>
@@ -49,9 +59,33 @@
     <section class="projects py-5">
         <div class="container">
             <div class="row">
-                <?php if (isset($f_projects['title']) & $f_projects['title'] != ''): ?>
-                    <h2 class="text-center"><?php echo $f_projects['title']; ?></h2>
-                <?php endif; ?>
+                <div class="col-12">
+                    <?php if (isset($f_projects['title']) & $f_projects['title'] != ''): ?>
+                        <h2 class="text-center"><?php echo $f_projects['title']; ?></h2>
+                    <?php endif; ?>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div id="slick-projects" class="project-items">
+                        <?php foreach( $f_about["gallery"] as $item ): ?>
+                            <div class="item" style="background-image: url(<?php echo $item["bg_image"]; ?>);">
+                                <h3>Title</h3>
+                                <div class="c-button">
+                                    <a class="btn_primary" href="#">View More</a>
+                                </div>
+                            </div>
+                        <?php endforeach; ?>
+                        <?php foreach( $f_about["gallery"] as $item ): ?>
+                            <div class="item" style="background-image: url(<?php echo $item["bg_image"]; ?>);">
+                                <h3>Title</h3>
+                                <div class="c-button">
+                                    <a class="btn_primary" href="#">View More</a>
+                                </div>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -60,14 +94,18 @@
     <?php $f_skills = get_field('skills'); ?>
     <?php if (isset($f_skills['slider_shortcode']) & $f_skills['slider_shortcode'] != ''): ?>
         <section class="skills py-5">
-            <div class="container-large overflow-hidden">
+            <div class="container-fluid overflow-hidden">
                 <?php if (isset($f_skills['title']) & $f_skills['title'] != ''): ?>
                     <div class="row">
-                        <h2 class="text-center"><?php echo $f_skills['title']; ?></h2>
+                        <div class="col-12">
+                            <h2 class="text-center"><?php echo $f_skills['title']; ?></h2>
+                        </div>
                     </div>
                 <?php endif; ?>
                 <div class="row mt-5">
-                    <?php echo do_shortcode($f_skills['slider_shortcode']); ?>
+                    <div class="col-12">
+                        <?php echo do_shortcode($f_skills['slider_shortcode']); ?>
+                    </div>
                 </div>
             </div>
         </section>
@@ -84,7 +122,8 @@
             </div>
         </div>
     </section>
-                
+
+<!--                 
     <?php /*********** 🧩 CERTIFICATIONS SECTION ***********/ ?>
     <?php $f_certifications = get_field('certifications'); ?>
     <section class="certifications py-5">
@@ -96,7 +135,7 @@
             </div>
         </div>
     </section>
-</div>
+</div> -->
         
 
 <?php get_footer(); ?>
