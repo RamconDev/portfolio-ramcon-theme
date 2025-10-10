@@ -10,7 +10,6 @@ sass --watch wp-content/themes/portfolio-ramcon/assets/css/sass/main.scss:wp-con
 @use "base/variables";
 
 // Components
-@use "components/slick-slider";
 @use "components/buttons";
 
 // Layouts
@@ -19,4 +18,3 @@ sass --watch wp-content/themes/portfolio-ramcon/assets/css/sass/main.scss:wp-con
 
 // Pages
 @use "pages/home";
-@use "pages/single-portafolios";

@@ -1,28 +1,9 @@
 @use "../abstracts/index" as *;
-.main, footer {
-  transition: filter .4s ease-in-out;
-  &.menu-active {
-    filter: invert(1) brightness(.2);
-  }
-}
-header {
-  width: 100%;
-  top:0px;
-  left:0px;
 
+header {
   background-color: $black;
   color: $white;
   padding: 10px;
-
-  transition: top .4s ease-in-out,
-              position .4s ease-in-out;
-  &.fixed {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 999;
-  }
   .logo {
     text-transform: uppercase;
     text-decoration: none;
@@ -49,48 +30,6 @@ header {
           }
         }
       }
-    }
-  }
-  .burguer {
-    display: none;
-    img {
-      width: 30px;
-    }
-  }
-}
-
-@media ( max-width: 992px ) {
-  header {
-    position: relative;
-    nav {
-      ul {
-        position: absolute;
-        top: 50px;
-        left: -100%;
-        width: 50%;
-        min-width: 310px;
-        min-height: calc(100vh - 50px);
-
-        background-color: $black;
-        z-index: 999;
-
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-
-        transition: left .4s ease-in-out;
-        &.active {
-          left: 0px;
-        }
-        li {
-          a {
-            font-size: 28px;
-          }
-        }
-      }
-    }
-    .burguer {
-      display: block;
     }
   }
 }

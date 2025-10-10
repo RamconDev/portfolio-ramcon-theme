@@ -16,7 +16,7 @@
                 <div class="col-6">
                     <span class="logo">Hector Ramirez</span>
                 </div>
-                <div class="col-6 d-flex justify-content-end">
+                <div class="col-6">
                     <nav>
                         <?php
                         if (has_nav_menu('navbar-menu')) {
@@ -30,11 +30,7 @@
                         }
                         ?>
                     </nav>
-                    <div class="burguer">
-                        <img src="<?php echo get_template_directory_uri() . "/assets/images/icons/arrow-left.svg"; ?>" alt="">
-                    </div>
                 </div>
             </div>
         </div>
     </header>
-    <div class="main">

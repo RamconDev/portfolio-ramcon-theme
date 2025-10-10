@@ -1,4 +1,3 @@
-</div>
 <footer id="contact" class="py-5">
     <div class="container">
         <!-- <div class="row mb-5">
@@ -36,7 +35,6 @@
         </div>
     </div>
 </footer>
-
 <?php
     wp_footer();
 ?>
