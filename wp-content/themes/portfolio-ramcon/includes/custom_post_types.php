@@ -52,3 +52,68 @@ function register_taxonomy_tecnologias() {
     register_taxonomy($taxonomy_name, $cpt_name, $args);
 }
 add_action('init', 'register_taxonomy_tecnologias');
+
+
+/**
+ * ✅
+ */
+function register_cpt_experience() {
+    $cpt_name = 'Experiencias';
+    $singular_name = 'experiencia';
+    $slug_name = 'experiencias';
+    $menu_icon = 'dashicons-yes-alt';
+
+    $labels = [
+        'name' => __( $cpt_name ),
+        'singular_name' => __( $singular_name ),
+        'menu_name' => __( $cpt_name, 'admin_menu' ),
+        'view_item' => __( 'Ver ' . $singular_name ),
+        'search_items' => __( 'Buscar ' . $singular_name ),
+    ];
+
+    $args = [
+        'label' => __( $cpt_name ),
+        'labels' => $labels,
+        'public' => true,
+        'menu_icon' => $menu_icon,
+        'supports' => ['title', 'editor', 'thumbnail'],
+        'has_archive' => true,
+        'rewrite' => ['slug' => $slug_name],
+        'show_in_rest' => true,
+    ];
+
+    register_post_type($cpt_name, $args);
+}
+add_action('init', 'register_cpt_experience');
+
+/**
+ * ✅
+ */
+function register_cpt_certifications() {
+    $cpt_name = 'Certificaciones';
+    $singular_name = 'certificacion';
+    $slug_name = 'certificaciones';
+    $menu_icon = 'dashicons-welcome-learn-more';
+
+    $labels = [
+        'name' => __( $cpt_name ),
+        'singular_name' => __( $singular_name ),
+        'menu_name' => __( $cpt_name, 'admin_menu' ),
+        'view_item' => __( 'Ver ' . $singular_name ),
+        'search_items' => __( 'Buscar ' . $singular_name ),
+    ];
+
+    $args = [
+        'label' => __( $cpt_name ),
+        'labels' => $labels,
+        'public' => true,
+        'menu_icon' => $menu_icon,
+        'supports' => ['title', 'editor', 'thumbnail'],
+        'has_archive' => true,
+        'rewrite' => ['slug' => $slug_name],
+        'show_in_rest' => true,
+    ];
+
+    register_post_type($cpt_name, $args);
+}
+add_action('init', 'register_cpt_certifications');

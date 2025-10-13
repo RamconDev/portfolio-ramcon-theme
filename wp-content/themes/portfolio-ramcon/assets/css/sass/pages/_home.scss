@@ -113,7 +113,7 @@
       }
       .draggable {
         padding: 40px 0px !important;
-        max-width: calc(100vw - 48px);
+        max-width: calc(100vw - 24px);
       }
       .slick-dots {
         display: flex;
@@ -202,5 +202,37 @@
 
   .experience {
     background-color: $grey;
+    .experience-items {
+      .item {
+        .c-principal {
+          display: flex;
+          align-items: center;
+          gap: 20px;
+          img {
+            object-fit: contain;
+            max-width: 120px;
+            max-height: 60px;
+            flex: 320px;
+          }
+          .info {
+            h3 {
+              span {
+                color: $cyan_electric;
+              }
+            }
+          }
+        }
+      }
+    }
+    @media( max-width: 767px ){
+      .experience-items {
+        .item {
+          .c-principal {
+            flex-direction: column;
+            align-items: start;
+          }
+        }
+      }
+    }
   }
 }

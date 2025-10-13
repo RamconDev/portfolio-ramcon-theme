@@ -110,6 +110,42 @@
                     <h2 class="text-center"><?php echo $f_experience['title']; ?></h2>
                 <?php endif; ?>
             </div>
+            <div class="row">
+                <?php
+                    $args = [
+                        'post_type' => 'experiencias',
+                        'posts_per_page' => -1
+                    ];
+
+                    $loop = new WP_Query( $args );
+                ?>
+                <div class="experience-items">
+                    <?php if( $loop->have_posts() ) : ?>
+                        <?php while( $loop->have_posts() ) : $loop->the_post(); ?>
+                            <div class="item mt-5">
+                                                        
+    <?php
+        $experience = get_field('experience');
+        // echo "<pre>";
+        // var_dump($experience);
+        // echo "</pre>";
+    ?>
+                                <div class="c-principal">
+                                    <img src="<?php echo has_post_thumbnail() ? get_the_post_thumbnail_url() : ''; ?>" alt="">
+                                    <div class="info">
+                                        <h3><?php echo get_the_title(); ?> <span><?php echo $experience['rol']; ?></span></h3>
+                                        <h4><?php echo $experience['start_date']; ?> to <?php echo $experience['end_date'] ? $experience['end_date'] : 'Actuality' ?></h4>
+                                    </div>
+                                </div>
+                                <div class="c-description">
+                                    <p><?php the_content(); ?></p>
+                                </div>
+                            </div>
+                        <?php endwhile; ?>
+                        <?php wp_reset_postdata(); ?>
+                    <?php endif; ?>
+                </div>
+            </div>
         </div>
     </section>
                 
