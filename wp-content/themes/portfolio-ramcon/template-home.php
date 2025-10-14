@@ -122,14 +122,8 @@
                 <div class="experience-items">
                     <?php if( $loop->have_posts() ) : ?>
                         <?php while( $loop->have_posts() ) : $loop->the_post(); ?>
-                            <div class="item mt-5">
-                                                        
-    <?php
-        $experience = get_field('experience');
-        // echo "<pre>";
-        // var_dump($experience);
-        // echo "</pre>";
-    ?>
+                            <div class="item mt-5">                        
+                                <?php $experience = get_field('experience'); ?>
                                 <div class="c-principal">
                                     <img src="<?php echo has_post_thumbnail() ? get_the_post_thumbnail_url() : ''; ?>" alt="">
                                     <div class="info">
@@ -152,11 +146,35 @@
     <?php /*********** 🧩 CERTIFICATIONS SECTION ***********/ ?>
     <?php $f_certifications = get_field('certifications'); ?>
     <section class="certifications py-5">
+        <img src="<?php echo get_template_directory_uri() . '/assets/images/icons/medal.png'; ?>" alt="" class="bg-img">
         <div class="container">
             <div class="row">
                 <?php if (isset($f_certifications['title']) & $f_certifications['title'] != ''): ?>
                     <h2 class="text-center"><?php echo $f_certifications['title']; ?></h2>
                 <?php endif; ?>
+            </div>
+            <div class="row">
+                <?php
+                    $args = [
+                        'post_type' => 'certificaciones',
+                        'posts_per_page' => -1
+                    ];
+
+                    $loop = new WP_Query($args);
+                ?>
+                <div class="studies-items">
+                    <?php if( $loop->have_posts() ) : ?>
+                        <?php while( $loop->have_posts() ) : $loop->the_post(); ?>
+                            <div class="item pt-5">
+                                <?php $studies = get_field('estudios'); ?>
+                                <h5><?php echo $studies['instituto']; ?></h5>
+                                <h3><?php echo get_the_title(); ?></h3>
+                                <span><?php echo $studies['estado']; ?> <?php echo $studies['certificado'] ? '<a href="' . $studies["certificado"] . '">Certificate</a>' : '' ?></span>
+                            </div>
+                        <?php endwhile; ?>
+                        <?php wp_reset_postdata(); ?>
+                    <?php endif; ?>
+                </div>
             </div>
         </div>
     </section>
