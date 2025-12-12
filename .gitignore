@@ -7,7 +7,7 @@
 /wp-includes/
 
 # Ignorar archivos en el directorio raíz
-/index.php
+#/index.php
 /license.txt
 /readme.html
 /wp-*.php
@@ -27,18 +27,18 @@ Thumbs.db
 # ==========================================================
 
 # Archivos específicos y carpetas generadas
-/wp-content/index.php
-/wp-content/languages/
-/wp-content/upgrade/
-/wp-content/uploads/
-/wp-content/ai1wm-backups/
+# /wp-content/index.php
+# /wp-content/languages/
+# /wp-content/upgrade/
+# /wp-content/uploads/
+# /wp-content/ai1wm-backups/
 
 # ----------------------------------------------------------
 # 3. GESTIÓN DE PLUGINS (SOLO NAME_PLUGIN)
 # ----------------------------------------------------------
 
 # Ignora todos los plugins
-/wp-content/plugins/*
+#/wp-content/plugins/*
 # Excepción: Incluye el plugin específico
 # !/wp-content/plugins/name_plugin/
 # Excepción: Incluye todos los contenidos dentro de name_plugin
@@ -52,7 +52,7 @@ Thumbs.db
 /wp-content/themes/*
 
 # 2. Excepción: Asegura que la carpeta del tema específico NO se ignore.
-!/wp-content/themes/portfolio-ramcon/
+!/wp-content/themes/portfolio-ramcon-theme/
 
 # 3. Excepción: Asegura que todo el CONTENIDO de esa carpeta NO se ignore.
-!/wp-content/themes/portfolio-ramcon/**
+!/wp-content/themes/portfolio-ramcon-theme/**
