@@ -55,8 +55,46 @@
             'post_type'         => 'portafolios',
             'posts_per_page'    => -1
         ];
+        
         $loop = new WP_Query($args);
     ?>
+    <section class="my-proyects py-5">
+        <div class="container">
+            <div class="row">
+                <h2>Projects when i worked</h2>
+                <?php if ( $loop->have_posts() ) : ?>
+                    <?php 
+                        $terms = get_terms( array(
+                            'taxonomy'   => 'Tecnologias',
+                            'hide_empty' => false,
+                        ) );
+                    ?>
+                    <div class="wrap-technologies">
+                        <?php foreach($terms as $term) : ?>
+                            <h4 class="filter-tech" data-tech="<?php echo $term->term_id; ?>"><?php echo $term->name;?></h4>
+                        <?php endforeach; ?>
+                    </div>
+                    <div class="wrap-projetcs">
+                        <?php while( $loop->have_posts() ) : $loop->the_post(); ?>
+                            <div class="item" data-tech="<?php echo $str_terms_id; ?>" style="background-image: url(<?php echo has_post_thumbnail() ? get_the_post_thumbnail_url() : get_template_directory_uri() . '/assets/images/default-img/center.jpg'; ?>)">
+                                <div class="wrap-content">
+                                    <h3 class="text-center"><?php echo get_the_title(); ?></h3>
+                                    <div class="c-button">
+                                        <a href="<?php echo get_the_permalink(); ?>" class="btn_primary">View More</a>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php endwhile; ?>
+                        <?php wp_reset_postdata(); ?>
+                    </div>
+                <?php else: ?>
+                    <div>
+                        <h3>Nothing for now.</h3>
+                    </div>
+                <?php endif; ?>
+            </div>
+        </div>
+    </section>
     <section class="projects py-5" id="projects-work">
         <div class="container">
             <div class="row">

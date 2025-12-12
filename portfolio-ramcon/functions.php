@@ -16,3 +16,8 @@ include_once get_template_directory() . '/includes/shortcodes.php';
  * ✅ Register custom post types and taxonomies.
  */
 include_once get_template_directory() . '/includes/custom_post_types.php';
+
+/**
+ * ✅ Register Handlers.
+ */
+include_once get_template_directory() . '/includes/handlers.php';

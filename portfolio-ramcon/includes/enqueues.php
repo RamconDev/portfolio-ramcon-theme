@@ -29,7 +29,8 @@ function global_enqueues () {
 
         wp_localize_script('template-home-js','data',
             array(
-                'templateUrl' => get_template_directory_uri()
+                'templateUrl' => get_template_directory_uri(),
+                'ajax_url' => admin_url('admin-ajax.php')
             )
         );
     }
