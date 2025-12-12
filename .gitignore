@@ -1,41 +1,58 @@
-# ignore all files in wp-admin
+# ==========================================================
+# 1. IGNORAR NÚCLEO DE WORDPRESS (WordPress Core)
+# ==========================================================
+
+# Ignorar las carpetas principales del núcleo
 /wp-admin/
-
-# ignore specific directories and files in wp-content
-/wp-content/index.php
-/wp-content/languages/
-/wp-content/plugins/index.php
-/wp-content/themes/index.php
-/wp-content/upgrade/
-/wp-content/uploads/
-/wp-content/ai1wm-backups/
-
-
-# ignore everything in wp-content/plugins except for "name_plugin"
-/wp-content/plugins/*
-!/wp-content/plugins/name_plugin/
-!/wp-content/plugins/name_plugin/** */
-
-# ignore all in wp-content/themes except for portfolio-ramcon
-/wp-content/themes/*
-!/wp-content/themes/portfolio-ramcon/
-!/wp-content/themes/portfolio-ramcon/**
-
-# ignore all files in wp-includes
 /wp-includes/
 
-# ignore all files in the root directory
+# Ignorar archivos en el directorio raíz
 /index.php
 /license.txt
 /readme.html
 /wp-*.php
 /xmlrpc.php
 
-# ignore wp-config.php and logs
+# Ignorar archivos de configuración y logs
 wp-config.php
 *.log
 
-# ignore system files that are not needed for WordPress
-/.htaccess
+# Ignorar archivos del sistema
+.htaccess
 ehthumbs.db
 Thumbs.db
+
+# ==========================================================
+# 2. IGNORAR ARCHIVOS Y CARPETAS DENTRO DE WP-CONTENT
+# ==========================================================
+
+# Archivos específicos y carpetas generadas
+/wp-content/index.php
+/wp-content/languages/
+/wp-content/upgrade/
+/wp-content/uploads/
+/wp-content/ai1wm-backups/
+
+# ----------------------------------------------------------
+# 3. GESTIÓN DE PLUGINS (SOLO NAME_PLUGIN)
+# ----------------------------------------------------------
+
+# Ignora todos los plugins
+/wp-content/plugins/*
+# Excepción: Incluye el plugin específico
+# !/wp-content/plugins/name_plugin/
+# Excepción: Incluye todos los contenidos dentro de name_plugin
+# !/wp-content/plugins/name_plugin/**
+
+# ----------------------------------------------------------
+# 4. GESTIÓN DE TEMAS (SOLO PORTFOLIO-RAMCON) -> EL CAMBIO CLAVE
+# ----------------------------------------------------------
+
+# 1. Ignora todos los temas (archivos y carpetas) DENTRO de wp-content/themes
+/wp-content/themes/*
+
+# 2. Excepción: Asegura que la carpeta del tema específico NO se ignore.
+!/wp-content/themes/portfolio-ramcon/
+
+# 3. Excepción: Asegura que todo el CONTENIDO de esa carpeta NO se ignore.
+!/wp-content/themes/portfolio-ramcon/**
