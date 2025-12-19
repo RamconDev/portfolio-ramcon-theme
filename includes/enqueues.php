@@ -24,7 +24,6 @@ function global_enqueues () {
     }
 
     if (is_page_template('template-home.php')) {
-        slick_slider_enqueues();
         wp_enqueue_script('template-home-js', get_template_directory_uri() . '/assets/js/home.js', array('jquery'), time(), true);
 
         wp_localize_script('template-home-js','data',
