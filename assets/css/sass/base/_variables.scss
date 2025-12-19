@@ -3,6 +3,7 @@
 $black: #1a1a1a;
 $grey: color.scale($black, $lightness: 95%);
 $white: #fff;
+$white-transparent: rgba($white, .05);
 $cyan_electric_base: #03c3ff;
 $cyan_electric: color.adjust($cyan_electric_base, $lightness: -10%);
 

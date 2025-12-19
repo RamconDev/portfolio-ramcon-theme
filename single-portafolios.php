@@ -23,13 +23,13 @@
 
                     <?php $terms = get_the_terms(get_the_ID(), 'Tecnologias'); ?>
                     <?php if ($terms && !is_wp_error($terms)) : ?>
-                        <ul class="portfolio-categories pt-3 pb-5">
+                        <ul class="categories pt-3 pb-5">
                         <?php foreach ($terms as $term) : ?>
                             <?php
                             $color = get_field('text_color', 'Tecnologias_' . $term->term_id);
                             $bg_color = get_field('bg_color', 'Tecnologias_' . $term->term_id);
                             ?>
-                            <li style="color:<?php echo $color; ?>;background-color:<?php echo $bg_color; ?>;"><?php echo esc_html($term->name); ?></li>
+                            <li class="item-cat" style="color:<?php echo $color; ?>;background-color:<?php echo $bg_color; ?>;"><?php echo esc_html($term->name); ?></li>
                         <?php endforeach; ?>
                         </ul>
                     <?php endif; ?>

@@ -11,7 +11,7 @@
                 tech_id: techID
             },
             beforeSend: function() {
-                $('.wrap-projetcs').html('<p>Cargando...</p>');
+                $('.wrap-projetcs').html('<p style="color:#fff;">Loading...</p>');
             },
             success: function(response) {
                 $('.wrap-projetcs').html(response);

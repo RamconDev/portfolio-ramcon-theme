@@ -9,7 +9,7 @@
 <div id="home">
     <?php /*********** 🧩 HERO SECTION ***********/ ?>
     <?php $f_hero = get_field('hero'); ?>
-    <section class="hero" style="background-image: url(<?php echo !isset($f_hero['bg_image']) || !$f_hero['bg_image'] ? get_template_directory_uri() . "/assets/images/default-img/bghero.png" : $f_hero['bg_image']; ?>);">
+    <section class="hero" id="hero" style="background-image: url(<?php echo !isset($f_hero['bg_image']) || !$f_hero['bg_image'] ? get_template_directory_uri() . "/assets/images/default-img/bghero.png" : $f_hero['bg_image']; ?>);">
         <div class="container">
             <div class="row">
                 <?php if (isset($f_hero['title']) & $f_hero['title'] != ''): ?>
@@ -61,7 +61,9 @@
     <section class="my-proyects py-5">
         <div class="container">
             <div class="row">
-                <h2>Projects when i worked</h2>
+                <?php if (isset($f_projects['title']) & $f_projects['title'] != ''): ?>
+                    <h2 class="text-center"><?php echo $f_projects['title']; ?></h2>
+                <?php endif; ?>
                 <?php if ( $loop->have_posts() ) : ?>
                     <?php 
                         $terms = get_terms( array(
@@ -69,23 +71,19 @@
                             'hide_empty' => false,
                         ) );
                     ?>
-                    <div class="wrap-technologies">
-                        <?php foreach($terms as $term) : ?>
-                            <h4 class="filter-tech" data-tech="<?php echo $term->term_id; ?>"><?php echo $term->name;?></h4>
-                        <?php endforeach; ?>
+                    <div class="wrap-technologies mt-5 my-5">
+                        <ul>
+                            <li class="filter-tech" data-tech="0">All</li>
+                            <?php foreach($terms as $term) : ?>
+                                <li class="filter-tech" data-tech="<?php echo $term->term_id; ?>"><?php echo $term->name;?></li>
+                            <?php endforeach; ?>
+                        </ul>
                     </div>
                     <div class="wrap-projetcs">
-                        <?php while( $loop->have_posts() ) : $loop->the_post(); ?>
-                            <div class="item" data-tech="<?php echo $str_terms_id; ?>" style="background-image: url(<?php echo has_post_thumbnail() ? get_the_post_thumbnail_url() : get_template_directory_uri() . '/assets/images/default-img/center.jpg'; ?>)">
-                                <div class="wrap-content">
-                                    <h3 class="text-center"><?php echo get_the_title(); ?></h3>
-                                    <div class="c-button">
-                                        <a href="<?php echo get_the_permalink(); ?>" class="btn_primary">View More</a>
-                                    </div>
-                                </div>
-                            </div>
-                        <?php endwhile; ?>
-                        <?php wp_reset_postdata(); ?>
+                        <?php 
+                        # Handler to filter by taxonomy
+                        filter_posts_by_tech(); 
+                        ?>
                     </div>
                 <?php else: ?>
                     <div>

@@ -16,6 +16,17 @@ ul {
   list-style: none;
   padding: 0px;
   margin: 0px;
+  &.categories {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    .item-cat {
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+  }
 }
 
 h1,
