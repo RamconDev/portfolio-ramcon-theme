@@ -20,7 +20,7 @@
                 <?php endif; ?>
                 <?php if (isset($f_hero['download_cv']['title']) || isset($f_hero['download_cv']['url'])): ?>
                     <div class="c-button mt-3">
-                        <a class="btn_primary text-center" href="<?php echo $f_hero['download_cv']['url'] ?>"><?php echo $f_hero['download_cv']['title'] ?></a>
+                        <a class="btn_primary text-center" href="<?php echo $f_hero['download_cv']['url'] ?>" target="_blank"><?php echo $f_hero['download_cv']['title'] ?></a>
                     </div>
                 <?php endif; ?>
             </div>
