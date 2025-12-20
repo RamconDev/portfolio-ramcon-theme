@@ -66,15 +66,18 @@
                 <?php endif; ?>
                 <?php if ( $loop->have_posts() ) : ?>
                     <?php 
-                        $terms = get_terms( array(
+                        $parent_terms = get_terms( array(
                             'taxonomy'   => 'Tecnologias',
-                            'hide_empty' => false,
+                            'hide_empty' => true,
+                            'parent'     => 0,
+                            'orderby'    => 'term_id', 
+                            'order'      => 'ASC'
                         ) );
                     ?>
                     <div class="wrap-technologies mt-5 my-5">
                         <ul>
                             <li class="filter-tech" data-tech="0">All</li>
-                            <?php foreach($terms as $term) : ?>
+                            <?php foreach($parent_terms as $term) : ?>
                                 <li class="filter-tech" data-tech="<?php echo $term->term_id; ?>"><?php echo $term->name;?></li>
                             <?php endforeach; ?>
                         </ul>
@@ -98,7 +101,7 @@
     <?php $f_skills = get_field('skills'); ?>
     <?php if (isset($f_skills['slider_shortcode']) & $f_skills['slider_shortcode'] != ''): ?>
         <section class="skills py-5"  id="skills">
-            <div class="container-large overflow-hidden">
+            <div class="container-large overflow-hidden py-5">
                 <?php if (isset($f_skills['title']) & $f_skills['title'] != ''): ?>
                     <div class="row">
                         <h2 class="text-center"><?php echo $f_skills['title']; ?></h2>

@@ -3,21 +3,24 @@ function filter_posts_by_tech() {
 
     $tech_id = isset($_POST['tech_id']) ? intval($_POST['tech_id']) : 0;
 
-    $tax = '';
-    if ($tech_id != 0)
-        $tax = array(
-            'taxonomy' => 'Tecnologias',
-            'field'    => 'term_id',
-            'terms'    => $tech_id,
-        );
+    $limit = $tech_id != 0 ? -1 : 3;
 
     $args = array(
         'post_type' => 'portafolios',
-        'posts_per_page' => -1,
-        'tax_query' => array(
-            $tax
-        )
+        'posts_per_page' => $limit,
+        'order'      => 'DESC'
     );
+
+    if ($tech_id != 0)
+        $args['tax_query'] = array(
+            array(
+                'taxonomy' => 'Tecnologias',
+                'field'    => 'term_id',
+                'terms'    => $tech_id,
+            )
+        );
+
+
 
     $loop = new WP_Query($args);
 
@@ -33,7 +36,12 @@ function filter_posts_by_tech() {
                     <?php echo get_the_excerpt(); ?>
                 </p>
                 <?php $terms = get_the_terms(get_the_ID(), 'Tecnologias'); ?>
-                <?php if (isset($terms)): ?>
+                    <?php 
+                        if ( $terms && !is_wp_error($terms) ): 
+                            usort($terms, function($a, $b) {
+                                return $a->term_id - $b->term_id;
+                            });
+                    ?>
                     <ul class="categories">
                         <?php foreach ($terms as $term): ?>
                             <?php
