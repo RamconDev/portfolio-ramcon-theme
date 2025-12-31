@@ -22,7 +22,6 @@
       color: $white;
     }
     #slider-for {
-      width: 100%;
       .draggable {
         margin: auto;
       }
@@ -56,6 +55,21 @@
           border: 2px solid $white;
           opacity: 1;
         }
+      }
+    }
+  }
+  @media ( max-width: 575px ) {
+    .description {
+      #slider-for {
+        width: 85dvw;
+        .item {
+          overflow: hidden;
+          border-radius: 10px;
+          object-fit: contain;
+        }
+      }
+      #slider-nav {
+        width: 85dvw;
       }
     }
   }

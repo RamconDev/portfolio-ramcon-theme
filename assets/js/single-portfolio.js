@@ -23,7 +23,7 @@
             slidesToScroll: 1,
             asNavFor: '#slider-for',
             dots: false,
-            centerMode: true,
+            centerMode: false,
             focusOnSelect: true
         });
   })

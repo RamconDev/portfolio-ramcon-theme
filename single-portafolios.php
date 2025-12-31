@@ -17,8 +17,8 @@
     <?php $gallery = get_field('slider_gallery'); ?>
     <section class="description">
         <div class="container">
-            <div class="row d-flex align-items-start">
-                <div class="col-12 col-md-6">
+            <div class="row d-flex align-items-start gap-3 gap-lg-0">
+                <div class="col-12 col-lg-6">
                     <h2>Technologies:</h2>
 
                     <?php $terms = get_the_terms(get_the_ID(), 'Tecnologias'); ?>
@@ -57,7 +57,6 @@
                             <?php endif; ?>
                         <?php endforeach; ?>
                     </div>
-
                 </div>
             </div>
         </div>
