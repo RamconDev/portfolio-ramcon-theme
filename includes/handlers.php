@@ -3,7 +3,7 @@ function filter_posts_by_tech() {
 
     $tech_id = isset($_POST['tech_id']) ? intval($_POST['tech_id']) : 0;
 
-    $limit = $tech_id != 0 ? -1 : 3;
+    $limit = $tech_id != 0 ? -1 : 6;
 
     $args = array(
         'post_type' => 'portafolios',

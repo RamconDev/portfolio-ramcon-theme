@@ -1,10 +1,5 @@
 <footer id="contact" class="py-5">
     <div class="container">
-        <!-- <div class="row mb-5">
-            <div class="col-12">
-                <h2 class="text-start pb-4">Contact Me</h2>
-            </div>
-        </div> -->
         <div class="row">
             <div class="col-md-6 col-12">
                 <h2 class="text-start pb-5">Contact Me</h2>
